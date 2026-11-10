@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="logo-b-reverse-title">
+  <title id="logo-b-reverse-title">원격지킴이 로고 B안 반전형 (Canvas #FCFCFD)</title>
+  <!-- 어두운 배경용 단색 반전형 (#FCFCFD) -->
+  <!-- 상단 경로: 작업 후 이전 전원 설정으로 되돌아가는 복원 화살표 호 -->
+  <path d="M48 27V22C48 15.925 43.075 11 37 11H21" stroke="#FCFCFD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26.5 6L20 11L26.5 16" stroke="#FCFCFD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 하단 구조: 깨어 있는 동안 안정적으로 받쳐 주는 브래킷 받침 -->
+  <path d="M16 34V42C16 48.075 20.925 53 27 53H43" stroke="#FCFCFD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 기준 마커(좌상단)와 유지 상태 마커(우하단) 및 중앙 수평축 -->
+  <circle cx="16" cy="23" r="3" fill="#FCFCFD"/>
+  <circle cx="48" cy="41" r="4.5" fill="#FCFCFD"/>
+  <path d="M25 32H39" stroke="#FCFCFD" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

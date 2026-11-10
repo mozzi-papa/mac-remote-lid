@@ -36,7 +36,7 @@ Mac의 잠자기를 방지하는 개인용 macOS 메뉴 막대 앱입니다. 토
 v1.1.8을 `/Applications`에 설치합니다. 실행 중인 앱이 있으면 설치를 중단하므로 원격 모드를 끄고 메뉴에서 정상 종료한 뒤 실행해 주세요. ZIP의 SHA-256과 앱 식별자·버전·실행 파일·서명 무결성을 확인한 뒤 새 앱을 준비하고 기존 앱을 백업하여 교체합니다. 교체나 실행 요청 실패 시 기존 앱 복구를 시도하고 복구 실패 시 백업 경로를 안내합니다. 쓰기 권한이 없으면 관리자 비밀번호를 요청합니다.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/KangUnMo/mac-remote-lid/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mozzi-papa/mac-remote-lid/main/install.sh | bash
 ```
 
 설치 스크립트는 기존 격리 해제 동작을 유지하며 새 앱의 `com.apple.quarantine` 속성만 재귀적으로 제거합니다. 다른 확장 속성은 지우지 않습니다. 격리 속성 제거 실패는 설치를 중단하지 않으므로 실행 차단 시 수동 허용이 필요할 수 있습니다. 이 처리는 Apple 공증이나 배포자 신원 검증을 대신하지 않습니다.
@@ -44,7 +44,7 @@ curl -fsSL https://raw.githubusercontent.com/KangUnMo/mac-remote-lid/main/instal
 ### 방법 2: 수동 ZIP 다운로드
 현재 빌드는 Apple 개발자 인증서 서명과 공증이 없습니다. 출처와 파일 무결성을 확인하고 신뢰하는 경우에만 실행해 주세요.
 
-1. [GitHub Releases](https://github.com/KangUnMo/mac-remote-lid/releases)에서 `remote-lid-1.1.8-arm64.zip`과 같은 이름의 `.sha256` 파일을 다운로드하여 SHA-256을 확인하고 압축을 풉니다.
+1. [GitHub Releases](https://github.com/mozzi-papa/mac-remote-lid/releases)에서 `remote-lid-1.1.8-arm64.zip`과 같은 이름의 `.sha256` 파일을 다운로드하여 SHA-256을 확인하고 압축을 풉니다.
 2. `원격지킴이.app`을 응용 프로그램 폴더(`/Applications`)로 옮깁니다.
 3. 앱을 열어 본 뒤 실행 차단 경고가 나오면 ‘완료’를 선택합니다.
 4. 시스템 설정 → 개인정보 보호 및 보안에서 원격지킴이의 ‘그래도 열기’를 누릅니다.
@@ -122,8 +122,8 @@ macOS IOPowerSources API로 내장 배터리 유무를 구분합니다. 배터�
 
 ## 다운로드 페이지
 
-- [공개 다운로드 페이지](https://KangUnMo.github.io/mac-remote-lid/)
-- [v1.1.8 릴리스](https://github.com/KangUnMo/mac-remote-lid/releases/tag/v1.1.8)
+- [공개 다운로드 페이지](https://mozzi-papa.github.io/mac-remote-lid/)
+- [v1.1.8 릴리스](https://github.com/mozzi-papa/mac-remote-lid/releases/tag/v1.1.8)
 
 `website/index.html`은 외부 폰트, CDN, 분석 코드 없이 열 수 있는 정적 페이지입니다. 다운로드 버튼은 GitHub Releases의 앱 ZIP과 체크섬 파일을 가리킵니다. 로컬 빌드 결과는 기존 website/downloads 경로에 생성됩니다. 페이지의 토글은 화면 설명용이며 시스템 설정을 바꾸지 않습니다.
 
@@ -139,11 +139,11 @@ python3 -m http.server 8766 --bind 127.0.0.1 --directory website
 
 사용자의 최초 실행 예외 없이 배포하려면 [Apple의 Developer ID 안내](https://developer.apple.com/developer-id/)와 [공증 요구 사항](https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution)을 따라 Developer ID Application 서명, Hardened Runtime, secure timestamp와 공증을 준비해 주세요. 공증 완료 후 앱에 티켓을 첨부하고 ZIP과 SHA-256을 다시 생성해야 합니다.
 
-소스는 [KangUnMo/mac-remote-lid](https://github.com/KangUnMo/mac-remote-lid) 공개 저장소에서 관리합니다.
+소스는 [mozzi-papa/mac-remote-lid](https://github.com/mozzi-papa/mac-remote-lid) 공개 저장소에서 관리합니다.
 
 소스·문서·페이지 파일은 main 브랜치에 보관하고, 앱 ZIP과 SHA-256은 GitHub Releases에 별도로 공개합니다. `.gitignore`는 빌드 결과와 기존 루트 앱·ZIP을 제외합니다.
 
-`.github/workflows/pages.yml`은 main 브랜치의 website/ 또는 배포 설정이 변경되면 해당 정적 페이지를 GitHub Pages에 게시합니다. GitHub의 Pages 설정은 GitHub Actions 방식으로 활성화합니다. [배포 실행 내역](https://github.com/KangUnMo/mac-remote-lid/actions/workflows/pages.yml)에서 결과를 확인할 수 있습니다.
+`.github/workflows/pages.yml`은 main 브랜치의 website/ 또는 배포 설정이 변경되면 해당 정적 페이지를 GitHub Pages에 게시합니다. GitHub의 Pages 설정은 GitHub Actions 방식으로 활성화합니다. [배포 실행 내역](https://github.com/mozzi-papa/mac-remote-lid/actions/workflows/pages.yml)에서 결과를 확인할 수 있습니다.
 
 현재 버전은 v1.1.8입니다. 다음 버전을 배포할 때는 새 앱 ZIP·체크섬을 Releases에 공개한 다음 페이지의 다운로드 URL과 버전을 갱신합니다. 앱 ZIP은 소스 커밋이나 Pages 아티팩트에 포함하지 않습니다.
 

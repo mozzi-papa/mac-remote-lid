@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" fill="none" role="img" aria-labelledby="logo-title">
+  <title id="logo-title">원격지킴이: 화면 윤곽과 중앙 초록 점</title>
+  <rect x="3" y="4" width="16" height="11" rx="1.5" stroke="#202124" stroke-width="1.5"/>
+  <circle cx="11" cy="10" r="2.25" fill="#237A4B"/>
+  <path d="M1 17H21" stroke="#202124" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

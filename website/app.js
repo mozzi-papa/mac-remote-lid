@@ -126,7 +126,7 @@ const copyBtn = document.getElementById('copy-install-cmd');
 const copyFeedback = document.getElementById('copy-feedback');
 if (copyBtn && copyFeedback) {
   copyBtn.addEventListener('click', async () => {
-    const cmd = 'curl -fsSL https://raw.githubusercontent.com/KangUnMo/mac-remote-lid/main/install.sh | bash';
+    const cmd = 'curl -fsSL https://raw.githubusercontent.com/mozzi-papa/mac-remote-lid/main/install.sh | bash';
     try {
       await navigator.clipboard.writeText(cmd);
       copyFeedback.textContent = '명령어가 클립보드에 복사되었습니다. 터미널에 붙여넣으세요!';

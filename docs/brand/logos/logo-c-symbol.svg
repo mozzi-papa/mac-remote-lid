@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="logo-c-symbol-title">
+  <title id="logo-c-symbol-title">원격지킴이 로고 C안 보조 심벌 원안 (상태점 포함 시안)</title>
+  <!-- C안 워드마크 좌측에 결합되는 정사각형 보조 심벌 원안 (작동 상태색 #237A4B / #32D74B 포함 시안) -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#202124" stroke="#565B63" stroke-width="1.5"/>
+  <!-- 토글 트랙 -->
+  <rect x="12" y="20" width="40" height="24" rx="12" fill="#15171A" stroke="#D9DDE1" stroke-width="2.5"/>
+  <!-- 이전 전원 설정 기준점 (되돌아갈 위치 표시) -->
+  <circle cx="24" cy="32" r="3" fill="#8E959E"/>
+  <!-- 현재 유지 노브 (작동 상태 표시 시안) -->
+  <circle cx="40" cy="32" r="6.5" fill="#237A4B"/>
+</svg>

@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>원격지킴이 (RemoteLid) 로고 3안 비교본 — 단색·반전·원안</title>
+  <style>
+    :root {
+      /* docs/brand/DESIGN.md 색상 토큰 준수 */
+      --canvas: #FCFCFD;
+      --graphite: #202124;
+      --secondary: #565B63;
+      --silver: #ECEEF1;
+      --line: #D9DDE1;
+      --active: #237A4B;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 40px 24px 80px;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+      color: var(--graphite);
+      background: var(--canvas);
+      line-height: 1.75;
+      font-size: 16px;
+      word-break: keep-all;
+    }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+    }
+    .eyebrow {
+      font-family: ui-monospace, "SFMono-Regular", monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--secondary);
+      letter-spacing: 0.04em;
+      margin: 0 0 8px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+    }
+    header p {
+      margin: 0;
+      color: var(--secondary);
+      font-size: 15px;
+    }
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 48px 0 12px;
+      letter-spacing: -0.025em;
+    }
+    .section-desc {
+      margin: 0 0 20px;
+      font-size: 14px;
+      color: var(--secondary);
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    @media (max-width: 920px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--canvas);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-header {
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .card-header h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .badge {
+      font-family: ui-monospace, "SFMono-Regular", monospace;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--silver);
+      color: var(--graphite);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .stage-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .stage-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .stage {
+      min-height: 156px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 16px 20px;
+      position: relative;
+    }
+    .stage.light {
+      background: var(--canvas);
+      color: var(--graphite);
+    }
+    .stage.silver {
+      background: var(--silver);
+      color: var(--graphite);
+    }
+    .stage.dark {
+      background: var(--graphite);
+      color: var(--canvas);
+    }
+    .stage-label {
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      font-family: ui-monospace, "SFMono-Regular", monospace;
+      font-size: 11px;
+      color: var(--secondary);
+    }
+    .stage.dark .stage-label {
+      color: #D9DDE1;
+    }
+    .card-body {
+      padding: 16px 20px 20px;
+      font-size: 14px;
+      color: var(--secondary);
+      flex: 1;
+    }
+    .card-body p {
+      margin: 0 0 8px;
+    }
+    .card-body p:last-child {
+      margin-bottom: 0;
+    }
+    .card-body strong {
+      color: var(--graphite);
+    }
+    .file-list {
+      font-family: ui-monospace, "SFMono-Regular", monospace;
+      font-size: 12px;
+      color: var(--graphite);
+      background: var(--silver);
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+    /* 크기별 심벌 검증 표 */
+    .size-panel {
+      background: var(--canvas);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .size-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .size-table th, .size-table td {
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+    }
+    .size-table th {
+      font-weight: 600;
+      color: var(--secondary);
+      font-size: 12.5px;
+    }
+    .size-table tr:last-child td {
+      border-bottom: none;
+    }
+    .size-cell {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .swatch {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 10px;
+      border-radius: 6px;
+      gap: 8px;
+    }
+    .swatch.light {
+      background: var(--canvas);
+      border: 1px solid var(--line);
+    }
+    .swatch.dark {
+      background: var(--graphite);
+      border: 1px solid var(--graphite);
+    }
+    /* 워드마크 조합 및 UI 상태 분리 시연 */
+    .lockup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 760px) {
+      .lockup-grid { grid-template-columns: 1fr; }
+    }
+    .lockup-box {
+      padding: 20px 24px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .lockup-box.light {
+      background: var(--canvas);
+      color: var(--graphite);
+    }
+    .lockup-box.dark {
+      background: var(--graphite);
+      color: var(--canvas);
+      border-color: var(--graphite);
+    }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-text-ko {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+    }
+    .brand-text-en {
+      display: block;
+      font-family: ui-monospace, "SFMono-Regular", monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--secondary);
+      margin-top: 2px;
+    }
+    .lockup-box.dark .brand-text-en {
+      color: #D9DDE1;
+    }
+    .ui-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--silver);
+      color: var(--graphite);
+    }
+    .lockup-box.dark .ui-status-pill {
+      background: #2E3136;
+      color: var(--canvas);
+    }
+    .ui-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--active);
+    }
+    .note-banner {
+      margin-top: 32px;
+      padding: 18px 22px;
+      background: var(--silver);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--graphite);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <p class="eyebrow">DOCS / BRAND / LOGOS — PREVIEW</p>
+      <h1>원격지킴이 (RemoteLid) 로고 3안 비교본</h1>
+      <p>BI·VI 기준(docs/brand/DESIGN.md): 선택한 A안은 화면 윤곽과 초록 중앙 점을 사용합니다. 밝은 배경은 흑연색 윤곽, 어두운 배경은 밝은 윤곽을 사용합니다.</p>
+    </header>
+
+    <h2 class="section-title">1. 기본 사용: 단색(#202124) 및 어두운 배경 반전(#FCFCFD)</h2>
+    <p class="section-desc">A안은 사용자 참조에 맞춰 단순화했습니다. A안 중앙 초록 점은 고정 브랜드 표식이며 실제 앱 상태는 별도 UI에서 확인합니다. B·C는 비교 기록입니다.</p>
+    <div class="grid-3">
+      <!-- A안 단색/반전 -->
+      <article class="card">
+        <div class="card-header">
+          <h3>A안 · Mac 상태 표시 중심</h3>
+          <span class="badge">추천 기본형</span>
+        </div>
+        <div class="stage-pair">
+          <div class="stage light">
+            <span class="stage-label">MONO (#202124)</span>
+            <img src="logo-a.svg" width="64" height="64" alt="수정 A안 기본형">
+          </div>
+          <div class="stage dark">
+            <span class="stage-label">REVERSE (#FCFCFD)</span>
+            <img src="logo-a-reverse.svg" width="64" height="64" alt="로고 A안 반전형">
+          </div>
+        </div>
+        <div class="card-body">
+          <p><strong>형태 의도:</strong> 사용자 참조의 화면 윤곽·중앙 초록 점·하단 받침선만으로 '잠자기 방지·작업 유지'를 나타냅니다.</p>
+          <div class="file-list">logo-a.svg / logo-a-reverse.svg</div>
+        </div>
+      </article>
+
+      <!-- B안 단색/반전 -->
+      <article class="card">
+        <div class="card-header">
+          <h3>B안 · 유지·복원 심벌 중심</h3>
+          <span class="badge">단색·반전</span>
+        </div>
+        <div class="stage-pair">
+          <div class="stage light">
+            <span class="stage-label">MONO (#202124)</span>
+            <img src="logo-b-mono.svg" width="64" height="64" alt="로고 B안 단색 기본형">
+          </div>
+          <div class="stage dark">
+            <span class="stage-label">REVERSE (#FCFCFD)</span>
+            <img src="logo-b-reverse.svg" width="64" height="64" alt="로고 B안 반전형">
+          </div>
+        </div>
+        <div class="card-body">
+          <p><strong>형태 의도:</strong> 하단 받침 브래킷(유지)과 상단 복귀 화살표 호(이전 전원 설정 복원)를 결합한 비보안 지킴이 심벌입니다.</p>
+          <div class="file-list">logo-b-mono.svg / logo-b-reverse.svg</div>
+        </div>
+      </article>
+
+      <!-- C안 단색/반전 -->
+      <article class="card">
+        <div class="card-header">
+          <h3>C안 · 한글 워드마크 중심</h3>
+          <span class="badge">단색·반전</span>
+        </div>
+        <div class="stage-stack">
+          <div class="stage light" style="min-height: 78px; padding: 16px 12px 10px;">
+            <span class="stage-label">MONO (#202124)</span>
+            <img src="logo-c-mono.svg" width="248" height="56" alt="로고 C안 단색 기본형">
+          </div>
+          <div class="stage dark" style="min-height: 78px; padding: 16px 12px 10px;">
+            <span class="stage-label">REVERSE (#FCFCFD)</span>
+            <img src="logo-c-reverse.svg" width="248" height="56" alt="로고 C안 반전형">
+          </div>
+        </div>
+        <div class="card-body">
+          <p><strong>형태 의도:</strong> '원격지킴이' 한글 이름과 좌측 토글·기준점 보조 심벌을 결합한 워드마크입니다. 보조 심벌 단독 파일도 함께 제공합니다.</p>
+          <div class="file-list">logo-c-mono.svg / logo-c-reverse.svg<br>logo-c-symbol-mono.svg / logo-c-symbol-reverse.svg</div>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title">2. C안 보조 심벌 단독 파일 비교 (단색 · 반전 · 원안)</h2>
+    <p class="section-desc">C안 워드마크를 16~32픽셀 정사각형 영역에 억지로 넣지 않기 위해 분리한 독립 보조 심벌 파일입니다.</p>
+    <div class="grid-3">
+      <article class="card">
+        <div class="card-header">
+          <h3>C 보조 심벌 · 단색 기본형</h3>
+          <span class="badge">logo-c-symbol-mono.svg</span>
+        </div>
+        <div class="stage light">
+          <span class="stage-label">CANVAS (#FCFCFD) 배경</span>
+          <img src="logo-c-symbol-mono.svg" width="64" height="64" alt="C안 보조 심벌 단색 기본형">
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-header">
+          <h3>C 보조 심벌 · 어두운 배경 반전형</h3>
+          <span class="badge">logo-c-symbol-reverse.svg</span>
+        </div>
+        <div class="stage dark">
+          <span class="stage-label">GRAPHITE (#202124) 배경</span>
+          <img src="logo-c-symbol-reverse.svg" width="64" height="64" alt="C안 보조 심벌 반전형">
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-header">
+          <h3>C 보조 심벌 · 상태점 포함 원안</h3>
+          <span class="badge">logo-c-symbol.svg</span>
+        </div>
+        <div class="stage silver">
+          <span class="stage-label">SILVER (#ECEEF1) 배경 · 보존 시안</span>
+          <img src="logo-c-symbol.svg" width="64" height="64" alt="C안 보조 심벌 원안">
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title">3. 보존 시안: 작동 상태점(초록)을 포함한 초기 원안 3종</h2>
+    <p class="section-desc">A안은 사용자 참조에 맞춘 수정본이며 logo-a.svg가 웹 기본형입니다. B·C의 초기 상태점 시안은 비교 기록으로 보존합니다.</p>
+    <div class="grid-3">
+      <article class="card">
+        <div class="card-header">
+          <h3>A안 수정본 (사용자 참조 반영)</h3>
+          <span class="badge">logo-a.svg</span>
+        </div>
+        <div class="stage silver">
+          <img src="logo-a.svg" width="64" height="64" alt="로고 A안 원안">
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-header">
+          <h3>B안 원안 (상태점 포함 시안)</h3>
+          <span class="badge">logo-b.svg</span>
+        </div>
+        <div class="stage silver">
+          <img src="logo-b.svg" width="64" height="64" alt="로고 B안 원안">
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-header">
+          <h3>C안 원안 (상태점 포함 시안)</h3>
+          <span class="badge">logo-c.svg</span>
+        </div>
+        <div class="stage silver">
+          <img src="logo-c.svg" width="248" height="56" alt="로고 C안 원안">
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title">4. 소형 크기 사용성 비교 (16px · 24px · 32px, 단색 및 반전 기준)</h2>
+    <p class="section-desc">최소 여백은 심벌 높이의 1/4이며, 16픽셀용 심벌은 실제 디바이스 픽셀 렌더를 검수한 뒤 확정해야 합니다.</p>
+    <div class="size-panel">
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>심벌 종류</th>
+            <th>16×16 px</th>
+            <th>24×24 px</th>
+            <th>32×32 px</th>
+            <th>작은 크기에서의 구조적 제한 (실제 픽셀 렌더 검수 전 유의사항)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>A안 심벌</strong><br><code>logo-a-mono.svg</code><br><code>logo-a-reverse.svg</code></td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-a.svg" width="16" height="16" alt="수정 A안 기본형 16px"></span>
+                <span class="swatch dark"><img src="logo-a-reverse.svg" width="16" height="16" alt="A안 반전 16px"></span>
+              </div>
+            </td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-a.svg" width="24" height="24" alt="수정 A안 기본형 24px"></span>
+                <span class="swatch dark"><img src="logo-a-reverse.svg" width="24" height="24" alt="A안 반전 24px"></span>
+              </div>
+            </td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-a.svg" width="32" height="32" alt="수정 A안 기본형 32px"></span>
+                <span class="swatch dark"><img src="logo-a-reverse.svg" width="32" height="32" alt="A안 반전 32px"></span>
+              </div>
+            </td>
+            <td>메뉴 줄·추가 점·내부 가로선을 제거했습니다. 22×20 비례의 윤곽과 중앙 점을 사용하며, 작은 크기에서는 윤곽과 점이 구분되는지 확인합니다.</td>
+          </tr>
+          <tr>
+            <td><strong>B안 심벌</strong><br><code>logo-b-mono.svg</code><br><code>logo-b-reverse.svg</code></td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-b-mono.svg" width="16" height="16" alt="B안 단색 16px"></span>
+                <span class="swatch dark"><img src="logo-b-reverse.svg" width="16" height="16" alt="B안 반전 16px"></span>
+              </div>
+            </td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-b-mono.svg" width="24" height="24" alt="B안 단색 24px"></span>
+                <span class="swatch dark"><img src="logo-b-reverse.svg" width="24" height="24" alt="B안 반전 24px"></span>
+              </div>
+            </td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-b-mono.svg" width="32" height="32" alt="B안 단색 32px"></span>
+                <span class="swatch dark"><img src="logo-b-reverse.svg" width="32" height="32" alt="B안 반전 32px"></span>
+              </div>
+            </td>
+            <td>16px 축소 시 상단 화살표 날개(`M26.5 6L20 11L26.5 16`)와 좌측 기준점(`cx="16" cy="23"`) 사이 여백이 좁아질 수 있습니다. 실제 픽셀 렌더 검수 전까지 16px 선명성을 단정할 수 없으며, 필요시 화살촉 각도와 점 크기를 단순화해야 합니다.</td>
+          </tr>
+          <tr>
+            <td><strong>C안 보조 심벌</strong><br><code>logo-c-symbol-mono.svg</code><br><code>logo-c-symbol-reverse.svg</code></td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-c-symbol-mono.svg" width="16" height="16" alt="C 보조 심벌 단색 16px"></span>
+                <span class="swatch dark"><img src="logo-c-symbol-reverse.svg" width="16" height="16" alt="C 보조 심벌 반전 16px"></span>
+              </div>
+            </td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-c-symbol-mono.svg" width="24" height="24" alt="C 보조 심벌 단색 24px"></span>
+                <span class="swatch dark"><img src="logo-c-symbol-reverse.svg" width="24" height="24" alt="C 보조 심벌 반전 24px"></span>
+              </div>
+            </td>
+            <td>
+              <div class="size-cell">
+                <span class="swatch light"><img src="logo-c-symbol-mono.svg" width="32" height="32" alt="C 보조 심벌 단색 32px"></span>
+                <span class="swatch dark"><img src="logo-c-symbol-reverse.svg" width="32" height="32" alt="C 보조 심벌 반전 32px"></span>
+              </div>
+            </td>
+            <td>가로형 워드마크(`logo-c-mono.svg`)는 16~32px 정사각형에 넣을 수 없어 보조 심벌(`logo-c-symbol-*.svg`)을 사용합니다. 다만 외부 사각 테두리와 내부 캡슐 트랙의 이중 선 구조가 16px에서는 좁게 겹쳐 보일 수 있어 실제 픽셀 렌더 확인 후 외곽 테두리 생략 여부를 결정해야 합니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">5. 한글 워드마크 배치 및 UI 작동 상태 표시 분리 예시</h2>
+    <p class="section-desc">로고 자체는 단색(`#202124` 또는 `#FCFCFD`)으로 유지하고, 작동 상태 초록(`#237A4B`)은 별도 UI 상태 배지에만 사용한 구성입니다.</p>
+    <div class="lockup-grid">
+      <div class="lockup-box light">
+        <div class="brand-lockup">
+          <img src="logo-a.svg" width="32" height="32" alt="">
+          <div>
+            <div class="brand-text-ko">원격지킴이</div>
+            <span class="brand-text-en">REMOTELID</span>
+          </div>
+        </div>
+        <span class="ui-status-pill"><span class="ui-status-dot" aria-hidden="true"></span>UI 상태: 원격 모드 켜짐</span>
+      </div>
+      <div class="lockup-box dark">
+        <div class="brand-lockup">
+          <img src="logo-a-reverse.svg" width="32" height="32" alt="">
+          <div>
+            <div class="brand-text-ko">원격지킴이</div>
+            <span class="brand-text-en">REMOTELID</span>
+          </div>
+        </div>
+        <span class="ui-status-pill"><span class="ui-status-dot" aria-hidden="true"></span>UI 상태: 원격 모드 켜짐</span>
+      </div>
+      <div class="lockup-box light">
+        <div class="brand-lockup">
+          <img src="logo-b-mono.svg" width="32" height="32" alt="">
+          <div>
+            <div class="brand-text-ko">원격지킴이</div>
+            <span class="brand-text-en">REMOTELID</span>
+          </div>
+        </div>
+        <span class="ui-status-pill"><span class="ui-status-dot" aria-hidden="true"></span>UI 상태: 원격 모드 켜짐</span>
+      </div>
+      <div class="lockup-box dark">
+        <div class="brand-lockup">
+          <img src="logo-b-reverse.svg" width="32" height="32" alt="">
+          <div>
+            <div class="brand-text-ko">원격지킴이</div>
+            <span class="brand-text-en">REMOTELID</span>
+          </div>
+        </div>
+        <span class="ui-status-pill"><span class="ui-status-dot" aria-hidden="true"></span>UI 상태: 원격 모드 켜짐</span>
+      </div>
+    </div>
+
+    <div class="note-banner">
+      <strong>파일 구성 요약:</strong> 단색 기본형(`*-mono.svg` 4종), 어두운 배경 반전형(`*-reverse.svg` 4종), 상태점 포함 보존 원안(`logo-a.svg`, `logo-b.svg`, `logo-c.svg`, `logo-c-symbol.svg` 4종) 총 12개 SVG 파일이 모두 외부 의존성 없이 제작되었습니다.
+    </div>
+  </div>
+</body>
+</html>

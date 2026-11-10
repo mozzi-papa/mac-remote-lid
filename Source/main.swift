@@ -56,7 +56,7 @@ func installableUpdateVersion(_ update: AppUpdateInfo) -> String? {
     let version = update.version.hasPrefix("v") ? String(update.version.dropFirst()) : update.version
     guard version.range(of: #"^[0-9]+\.[0-9]+\.[0-9]+$"#, options: .regularExpression) != nil,
           version.split(separator: ".").allSatisfy({ Int($0) != nil }),
-          update.downloadURL.absoluteString == "https://github.com/KangUnMo/mac-remote-lid/releases/download/\(update.version)/remote-lid-\(version)-arm64.zip" else { return nil }
+          update.downloadURL.absoluteString == "https://github.com/mozzi-papa/mac-remote-lid/releases/download/\(update.version)/remote-lid-\(version)-arm64.zip" else { return nil }
     return version
 }
 
@@ -567,6 +567,7 @@ class StatusDotView: NSView {
 
 let remoteLoginSettingsURL = URL(string: "x-apple.systempreferences:com.apple.Sharing-Settings.extension?Services_RemoteLogin")!
 let sharingSettingsURL = URL(string: "x-apple.systempreferences:com.apple.preferences.sharing")!
+let gitPageURL = URL(string: "https://mozzi-papa.github.io/mac-remote-lid/")!
 
 func menuIcon(active: Bool?) -> NSImage {
     let image = NSImage(size: NSSize(width: 22, height: 20), flipped: false) { _ in
@@ -1098,7 +1099,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         lastUpdateCheck = Date()
         let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.1.7"
 
-        guard let url = URL(string: "https://api.github.com/repos/KangUnMo/mac-remote-lid/releases") else {
+        guard let url = URL(string: "https://api.github.com/repos/mozzi-papa/mac-remote-lid/releases") else {
             checkingUpdate = false
             return
         }
@@ -1388,11 +1389,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 • 강제 종료 시 앱을 다시 열어 '이전 설정 복원'을 눌러 주세요.
 
 수동 긴급 해제: sudo pmset -a disablesleep 0
+웹페이지: \(gitPageURL.absoluteString)
 개인용 로컬 서명 빌드 (Apple 공증 없음)
 """
         alert.addButton(withTitle: "확인")
+        alert.addButton(withTitle: "GitHub Pages 열기")
+        menu.cancelTracking()
         NSApp.activate(ignoringOtherApps: true)
-        alert.runModal()
+        if alert.runModal() == .alertSecondButtonReturn {
+            NSWorkspace.shared.open(gitPageURL)
+        }
     }
 
     @objc func quit() { NSApp.terminate(nil) }
@@ -1511,6 +1517,7 @@ func selfTest() throws {
     }
     precondition(remoteLoginSettingsURL.scheme == "x-apple.systempreferences")
     precondition(remoteLoginSettingsURL.query == "Services_RemoteLogin")
+    precondition(gitPageURL.absoluteString == "https://mozzi-papa.github.io/mac-remote-lid/")
     precondition(rootBoolean("SleepDisabled", in: " \"SleepDisabled\" = No") == false)
     precondition(rootBoolean("SleepDisabled", in: " \"SleepDisabled\" = Yes") == true)
     precondition(rootBoolean("SleepDisabled", in: " \"SleepDisabled\" = unknown") == nil)
@@ -1656,7 +1663,7 @@ func selfTest() throws {
         name: String = "remote-lid-1.1.7-arm64.zip", address: String? = nil) -> GitHubRelease {
         GitHubRelease(tag_name: tag, draft: draft, prerelease: prerelease,
             assets: [GitHubAsset(name: name, browser_download_url: address ??
-                "https://github.com/KangUnMo/mac-remote-lid/releases/download/\(tag)/\(name)")])
+                "https://github.com/mozzi-papa/mac-remote-lid/releases/download/\(tag)/\(name)")])
     }
     let validRelease = release()
     let selectedRelease = latestInstallableUpdate([release("v1.1.6", name: "remote-lid-1.1.6-arm64.zip"), validRelease])
@@ -1665,7 +1672,7 @@ func selfTest() throws {
     let invalidReleases = [release(draft: true), release(prerelease: true), release("v1.1.8-beta"),
         release("v1.1.bad"), release("V1.1.7"), release("v1.1.7\n"), release(name: "other-arm64.zip"),
         release(address: "https://example.com/remote-lid-1.1.7-arm64.zip"),
-        release(address: "https://github.com/KangUnMo/mac-remote-lid/releases/download/v1.1.7/remote-lid-1.1.7-arm64.zip?other")]
+        release(address: "https://github.com/mozzi-papa/mac-remote-lid/releases/download/v1.1.7/remote-lid-1.1.7-arm64.zip?other")]
     for invalid in invalidReleases {
         precondition(latestInstallableUpdate([invalid]) == nil)
         precondition(latestInstallableUpdate([invalid, validRelease])?.version == "v1.1.7")

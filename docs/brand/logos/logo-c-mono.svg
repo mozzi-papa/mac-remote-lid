@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" fill="none" role="img" aria-labelledby="logo-c-mono-title">
+  <title id="logo-c-mono-title">원격지킴이 로고 C안 단색 기본형 (Graphite #202124)</title>
+  <!-- 작동 상태색과 분리된 단색 기본형 (#202124) -->
+  <!-- 좌측 보조 심벌: 토글 트랙과 이전 설정 기준점·유지 노브 -->
+  <g transform="translate(8, 12)">
+    <rect x="3" y="3" width="42" height="42" rx="11" stroke="#202124" stroke-width="2.5"/>
+    <rect x="9" y="15" width="30" height="18" rx="9" stroke="#202124" stroke-width="2.25"/>
+    <!-- 이전 설정 기준점 -->
+    <circle cx="17.5" cy="24" r="2.25" fill="#202124"/>
+    <!-- 유지 노브 -->
+    <circle cx="30" cy="24" r="4.75" fill="#202124"/>
+  </g>
+  <!-- 한글 워드마크 (시스템 글꼴 기반 시안, 최종 상표 등록·배포 전 윤곽선 변환 대상) -->
+  <text x="68" y="39" fill="#202124" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', 'Malgun Gothic', sans-serif" font-size="27" font-weight="700" letter-spacing="-0.68">원격지킴이</text>
+  <!-- 보조 영문 표기 (RemoteLid) -->
+  <text x="69" y="56" fill="#202124" font-family="ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, monospace" font-size="11.5" font-weight="600" letter-spacing="1.4">REMOTELID</text>
+  <!-- 구분선 및 역할 설명 -->
+  <line x1="156" y1="47.5" x2="156" y2="57.5" stroke="#202124" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="165" y="56" fill="#202124" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif" font-size="11.5" font-weight="500" letter-spacing="-0.2">macOS 전원 설정 유지·복원</text>
+</svg>

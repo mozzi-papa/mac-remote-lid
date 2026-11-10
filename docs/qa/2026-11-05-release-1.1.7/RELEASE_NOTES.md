@@ -39,4 +39,4 @@ a30df925e8e2c366917d3f6dd9ca2a05ea3af767a51a6779b9b6644521f0a45e
 
 ## 변경 기준
 
-이전 릴리스는 [v1.1.6](https://github.com/KangUnMo/mac-remote-lid/releases/tag/v1.1.6), 기준 커밋은 [`1308e0b`](https://github.com/KangUnMo/mac-remote-lid/commit/1308e0bf571d16a99bd64d6b1ebad2a1560703a9)입니다. 이번 노트는 해당 커밋 대비 작업 트리 변경과 검증 결과를 바탕으로 작성했습니다. 작성 시점에 1.1.7은 미커밋·미게시 상태이며, 공개 시 최종 커밋과 버전 비교 링크를 확정합니다.
+이전 릴리스는 [v1.1.6](https://github.com/mozzi-papa/mac-remote-lid/releases/tag/v1.1.6), 기준 커밋은 [`1308e0b`](https://github.com/mozzi-papa/mac-remote-lid/commit/1308e0bf571d16a99bd64d6b1ebad2a1560703a9)입니다. 이번 노트는 해당 커밋 대비 작업 트리 변경과 검증 결과를 바탕으로 작성했습니다. 작성 시점에 1.1.7은 미커밋·미게시 상태이며, 공개 시 최종 커밋과 버전 비교 링크를 확정합니다.

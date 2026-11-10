@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="logo-b-title">
+  <title id="logo-b-title">원격지킴이 로고 B안: 유지·복원 심벌 중심</title>
+  <!-- 중립 흑연색 배경 타일 -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#1C2026" stroke="#313742" stroke-width="1.5"/>
+  <!-- 상단 경로: 작업 유지 후 이전 전원 설정으로 되돌아가는 복원 화살표 호 -->
+  <path d="M46 27V24C46 18.477 41.523 14 36 14H22" stroke="#D8DEE6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26.5 9.5L21 14L26.5 18.5" stroke="#D8DEE6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 하단 구조: 깨어 있는 동안 안정적으로 받쳐 주는 브래킷 받침 -->
+  <path d="M18 33V40C18 45.523 22.477 50 28 50H42" stroke="#8E98A4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 중앙 코어: 현재 유지 중인 활성 전원 상태 점과 기준 마커 -->
+  <circle cx="18" cy="24" r="3" fill="#687280"/>
+  <circle cx="46" cy="40" r="4.5" fill="#32D74B"/>
+  <path d="M26 32H38" stroke="#D8DEE6" stroke-width="3" stroke-linecap="round"/>
+</svg>

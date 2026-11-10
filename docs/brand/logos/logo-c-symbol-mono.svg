@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="logo-c-symbol-mono-title">
+  <title id="logo-c-symbol-mono-title">원격지킴이 로고 C안 보조 심벌 단색 기본형 (Graphite #202124)</title>
+  <!-- 작동 상태색과 분리된 C안 보조 심벌 단색 기본형 (#202124) -->
+  <rect x="6" y="6" width="52" height="52" rx="14" stroke="#202124" stroke-width="3.5"/>
+  <!-- 토글 트랙 -->
+  <rect x="13" y="20" width="38" height="24" rx="12" stroke="#202124" stroke-width="3"/>
+  <!-- 이전 전원 설정 기준점 -->
+  <circle cx="24" cy="32" r="3" fill="#202124"/>
+  <!-- 유지 노브 -->
+  <circle cx="40" cy="32" r="6" fill="#202124"/>
+</svg>

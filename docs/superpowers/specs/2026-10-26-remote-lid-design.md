@@ -26,6 +26,6 @@
 
 ## Mac 공통 지원 추가 승인
 
-저장소 이름은 `KangUnMo/mac-remote-lid`로 정리합니다. Apple Silicon MacBook·Mac mini·Mac Studio 등의 시스템·유휴 잠자기 방지와 복원을 지원하도록 전원 조회를 보완합니다. 배터리 유무는 IOPowerSources API로 확인하며, 조회 실패와 정상적인 내장 배터리 없음을 구분합니다. 배터리·덮개 표시는 MacBook에만 적용합니다. 데스크톱에는 배터리 경고를 표시하지 않습니다. 저장 형식과 복원 명령은 유지합니다.
+저장소 이름은 `mozzi-papa/mac-remote-lid`로 정리합니다. Apple Silicon MacBook·Mac mini·Mac Studio 등의 시스템·유휴 잠자기 방지와 복원을 지원하도록 전원 조회를 보완합니다. 배터리 유무는 IOPowerSources API로 확인하며, 조회 실패와 정상적인 내장 배터리 없음을 구분합니다. 배터리·덮개 표시는 MacBook에만 적용합니다. 데스크톱에는 배터리 경고를 표시하지 않습니다. 저장 형식과 복원 명령은 유지합니다.
 
 페이지와 사용 안내에서 공통 기능과 MacBook 전용 기능을 구분합니다. 기종별 모의 검사와 실제 현재 Mac의 읽기 검사를 수행합니다. 데스크톱 실기기, 24시간 연속 동작, Intel 지원과 외부 발행은 완료로 표시하지 않습니다.

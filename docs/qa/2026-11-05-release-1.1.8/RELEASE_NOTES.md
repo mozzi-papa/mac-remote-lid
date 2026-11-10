@@ -32,4 +32,4 @@ ZIP SHA-256: `950ef6a6001fd5012b9c0c43549b0f15f923a161bb48d3c7adeda8b5b768b6cf`
 
 ## 변경 기준
 
-[v1.1.7 기준 커밋 3d551d8](https://github.com/KangUnMo/mac-remote-lid/commit/3d551d804a41052a26f87cd6551afde74d1bebb5) 이후 변경입니다. [버전 비교](https://github.com/KangUnMo/mac-remote-lid/compare/v1.1.7...v1.1.8)는 정식 게시 후 확인할 수 있습니다.
+[v1.1.7 기준 커밋 3d551d8](https://github.com/mozzi-papa/mac-remote-lid/commit/3d551d804a41052a26f87cd6551afde74d1bebb5) 이후 변경입니다. [버전 비교](https://github.com/mozzi-papa/mac-remote-lid/compare/v1.1.7...v1.1.8)는 정식 게시 후 확인할 수 있습니다.

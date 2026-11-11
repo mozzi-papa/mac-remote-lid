@@ -76,6 +76,6 @@ ZIP은 macOS ditto로 생성했습니다. ditto가 UTF-8 이름 플래그를 설
 
 - v1.1.0 미리보기 릴리스에 앱 ZIP 976132바이트와 체크섬 파일 93바이트가 업로드된 것을 확인했습니다.
 - 인증 없는 공개 다운로드 URL에서 ZIP·체크섬 응답이 모두 HTTP 200이었고, ZIP 내용과 SHA-256이 로컬 검증 파일과 일치했습니다.
-- GitHub Pages는 workflow 방식으로 활성화했으며 공개 주소는 https://kangunmo.github.io/mac-remote-lid/ 입니다.
+- GitHub Pages는 workflow 방식으로 활성화했으며 공개 주소는 https://mozzi-papa.github.io/mac-remote-lid/ 입니다.
 - 변경 페이지의 다운로드 URL 3개, 내부 앵커와 정적 파일 경로, Pages YAML의 트리거·권한·업로드 경로를 검사했습니다. 앱 자체 검사와 서명 무결성도 다시 통과했습니다.
 - Pages의 실제 게시와 공개 페이지 검증은 이 커밋의 push로 실행되는 배포 작업을 기준으로 확인합니다. 결과는 위 배포 실행 내역에서 확인할 수 있습니다.

@@ -1,6 +1,6 @@
 # 독립 검토 B — 검사기와 브라우저 근거
 
-검토 대상은 `website/index.html`과 공개 페이지 `https://kangunmo.github.io/mac-remote-lid/`입니다. Assessment A의 의견이나 결과는 읽지 않았습니다. 이번 검토는 브랜드 방향의 선호보다 규칙, 실제 스타일, 오탐, 접근성 근거를 분리합니다.
+검토 대상은 `website/index.html`과 공개 페이지 `https://mozzi-papa.github.io/mac-remote-lid/`입니다. Assessment A의 의견이나 결과는 읽지 않았습니다. 이번 검토는 브랜드 방향의 선호보다 규칙, 실제 스타일, 오탐, 접근성 근거를 분리합니다.
 
 ## 검사 결과
 

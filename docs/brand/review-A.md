@@ -1,7 +1,7 @@
 # 원격지킴이 디자인 검토 A
 
 검토일: 2026-11-03  
-대상: `website/index.html`, `website/styles.css`, `website/app.js`, [공개 페이지](https://kangunmo.github.io/mac-remote-lid/)  
+대상: `website/index.html`, `website/styles.css`, `website/app.js`, [공개 페이지](https://mozzi-papa.github.io/mac-remote-lid/)  
 방식: 독립 디자인 검토. Assessment B 및 detector 결과를 보지 않고 판단하였습니다.  
 모드: Persuade. 제품은 macOS 전원 설정 도구이며 원격 접속이나 보안 서비스를 제공하지 않습니다.
 

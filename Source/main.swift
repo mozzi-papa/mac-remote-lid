@@ -567,6 +567,7 @@ class StatusDotView: NSView {
 
 let remoteLoginSettingsURL = URL(string: "x-apple.systempreferences:com.apple.Sharing-Settings.extension?Services_RemoteLogin")!
 let sharingSettingsURL = URL(string: "x-apple.systempreferences:com.apple.preferences.sharing")!
+let batterySettingsURL = URL(string: "x-apple.systempreferences:com.apple.Battery-Settings.extension")!
 let gitPageURL = URL(string: "https://mozzi-papa.github.io/mac-remote-lid/")!
 
 func menuIcon(active: Bool?) -> NSImage {
@@ -743,7 +744,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         updateBannerButton.contentTintColor = .systemTeal
         updateBannerButton.font = .systemFont(ofSize: 13, weight: .semibold)
         updateBannerButton.isHidden = true
-        let note = NSTextField(wrappingLabelWithString: "전원을 안정적으로 연결하고 통풍되는 곳에 두세요.\n끄면 앱이 변경한 전원 설정을 이전 값으로 복원합니다.\n창을 닫아도 메뉴 막대에서 계속 실행됩니다.")
+        let note = NSTextField(wrappingLabelWithString: "전원을 안정적으로 연결하고 통풍되는 곳에 두세요.\n장시간 원격 유지 시 시스템 설정의 배터리 최적화(80% 제한)를 권장합니다.\n끄면 앱이 변경한 전원 설정을 이전 값으로 복원합니다.\n창을 닫아도 메뉴 막대에서 계속 실행됩니다.")
         note.textColor = .secondaryLabelColor
         note.font = .systemFont(ofSize: 12)
         let stack = NSStackView(views: [title, stateLabel, detailLabel, toggleRow, launchCheckbox, ipLabel, sshCopyButton, displaySection, updateBannerButton, note])
@@ -1019,6 +1020,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         item("업데이트 확인…", action: #selector(checkUpdateAction)).isEnabled = !working && !checkingUpdate
         item("제어 창 열기", action: #selector(showWindow))
         item("SSH 접속 허용 설정…", action: #selector(openSSHSettings))
+        item("배터리 충전 최적화 설정…", action: #selector(openBatterySettings))
         item("사용 안내", action: #selector(help))
         item("종료…", action: #selector(quit)).isEnabled = !busy && !warningVisible && !updating
     }
@@ -1240,6 +1242,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         if NSWorkspace.shared.open(sharingSettingsURL) { return }
         showError("시스템 설정을 열지 못했습니다. 시스템 설정 → 일반 → 공유 → 원격 로그인에서 SSH 접속을 허용해 주세요.")
     }
+    @objc func openBatterySettings() {
+        menu.cancelTracking()
+        if NSWorkspace.shared.open(batterySettingsURL) { return }
+        showError("시스템 설정을 열지 못했습니다. 시스템 설정 → 배터리에서 '최적화된 배터리 충전' 또는 충전 한도를 설정해 주세요.")
+    }
     @objc func toggleMode() {
         render()
         if sleepDisabled == 1 { disableMode() } else { enableMode() }
@@ -1381,7 +1388,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         alert.informativeText = """
 • 원격 모드 켜기: Mac 본체 잠자기를 막고 켜기 전 전원 설정을 백업합니다.
 • 원격 모드 끄기: 앱이 바꾼 전원 설정을 이전 값으로 자동 복원합니다.
-• 배터리 보호: MacBook 미충전·20% 이하 시 켜기 전과 사용 중 경고합니다.
+• 배터리 보호: MacBook 미충전·20% 이하 시 경고하며, 과충전 방지를 위해 시스템 설정 → 배터리의 '최적화된 배터리 충전(80% 제한)' 사용을 권장합니다.
 
 [주의 사항]
 • 이동하거나 가방에 넣기 전에는 반드시 원격 모드를 꺼 주세요.
@@ -1517,6 +1524,7 @@ func selfTest() throws {
     }
     precondition(remoteLoginSettingsURL.scheme == "x-apple.systempreferences")
     precondition(remoteLoginSettingsURL.query == "Services_RemoteLogin")
+    precondition(batterySettingsURL.scheme == "x-apple.systempreferences")
     precondition(gitPageURL.absoluteString == "https://mozzi-papa.github.io/mac-remote-lid/")
     precondition(rootBoolean("SleepDisabled", in: " \"SleepDisabled\" = No") == false)
     precondition(rootBoolean("SleepDisabled", in: " \"SleepDisabled\" = Yes") == true)

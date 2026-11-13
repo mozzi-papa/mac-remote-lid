@@ -997,31 +997,46 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         displayItem.toolTip = "원격지킴이는 화면을 켜두지 않습니다. 클릭하면 제어 창에서 상세 내역을 확인합니다."
         menu.addItem(.separator())
 
+        item("제어 창 열기", action: #selector(showWindow))
+
+        let networkMenu = NSMenu()
         if !ips.isEmpty {
             for info in ips {
-                let entry = menu.addItem(withTitle: "\(info.label): \(info.ip)", action: #selector(copyIPAction(_:)), keyEquivalent: "")
+                let entry = networkMenu.addItem(withTitle: "\(info.label): \(info.ip)", action: #selector(copyIPAction(_:)), keyEquivalent: "")
                 entry.target = self
                 entry.representedObject = info.ip
                 entry.toolTip = "클릭하면 IP 주소(\(info.ip))를 클립보드에 복사합니다."
 
                 let sshCmd = "ssh \(sshUser)@\(info.ip)"
-                let sshEntry = menu.addItem(withTitle: "  ↳ SSH 명령어 복사 (\(sshCmd))", action: #selector(copyIPAction(_:)), keyEquivalent: "")
+                let sshEntry = networkMenu.addItem(withTitle: "  ↳ SSH 명령어 복사 (\(sshCmd))", action: #selector(copyIPAction(_:)), keyEquivalent: "")
                 sshEntry.target = self
                 sshEntry.representedObject = sshCmd
                 sshEntry.toolTip = "클릭하면 '\(sshCmd)' 명령어를 클립보드에 복사합니다."
             }
-            menu.addItem(.separator())
+        } else {
+            let empty = networkMenu.addItem(withTitle: "연결된 네트워크 IP 없음", action: nil, keyEquivalent: "")
+            empty.isEnabled = false
         }
+        let networkItem = menu.addItem(withTitle: "네트워크 및 SSH 복사", action: nil, keyEquivalent: "")
+        menu.setSubmenu(networkMenu, for: networkItem)
+
+        let settingsMenu = NSMenu()
+        let sshSettings = settingsMenu.addItem(withTitle: "SSH 원격 로그인 허용 설정…", action: #selector(openSSHSettings), keyEquivalent: "")
+        sshSettings.target = self
+        let batterySettings = settingsMenu.addItem(withTitle: "배터리 충전 최적화 설정…", action: #selector(openBatterySettings), keyEquivalent: "")
+        batterySettings.target = self
+        let settingsItem = menu.addItem(withTitle: "macOS 시스템 설정", action: nil, keyEquivalent: "")
+        menu.setSubmenu(settingsMenu, for: settingsItem)
+
+        menu.addItem(.separator())
 
         let loginItem = item("로그인 시 자동 실행", action: #selector(toggleLaunchAtLogin))
         loginItem.state = isLaunchAtLoginEnabled ? .on : .off
         loginItem.isEnabled = !working
 
         item("업데이트 확인…", action: #selector(checkUpdateAction)).isEnabled = !working && !checkingUpdate
-        item("제어 창 열기", action: #selector(showWindow))
-        item("SSH 접속 허용 설정…", action: #selector(openSSHSettings))
-        item("배터리 충전 최적화 설정…", action: #selector(openBatterySettings))
         item("사용 안내", action: #selector(help))
+        menu.addItem(.separator())
         item("종료…", action: #selector(quit)).isEnabled = !busy && !warningVisible && !updating
     }
 
